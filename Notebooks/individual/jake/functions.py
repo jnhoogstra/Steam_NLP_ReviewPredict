@@ -3,10 +3,14 @@
 import pandas as pd
 import numpy as np
 
+import nltk
+nltk.download("stopwords")
+nltk.download("wordnet")
+
 from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score, roc_auc_score
 
 
-# 
+# make sure your model is fit before scoring
 def ScoreModel(model, X, y):
     preds = model.predict(X)
     acc = accuracy_score(y, preds)
@@ -22,6 +26,18 @@ def ScoreModel(model, X, y):
     print("ROC_AUC:   ", rockout)
 
     
-def FeatureImp(model, X):
-    feature = list(zip(X.columns, 100*(np.round(boost_model_new.feature_importances_, 4))))
-    return feature
+    
+    
+def CleanText(reviews):
+    stopwords = nltk.corpus.stopwords.words('english')
+    punct = string.punctuation
+    lemma = nltk.WordNetLemmatizer()
+    
+    reviews = "".join([word for word in reviews if word not in string.punctuation])
+    tokens = re.split('\W+', reviews)
+    reviews = [lemma.lemmatize(word) for word in tokens if word not in stopwords]
+    
+# use function like this in your notebook
+# df['cleaned_text'] = df['text'].apply(lambda x: clean_text(x.lower()))
+    
+    return reviews
