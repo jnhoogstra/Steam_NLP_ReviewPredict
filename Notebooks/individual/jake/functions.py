@@ -3,6 +3,8 @@
 import pandas as pd
 import numpy as np
 
+import re
+import string
 import nltk
 nltk.download("stopwords")
 nltk.download("wordnet")
@@ -38,6 +40,6 @@ def CleanText(reviews):
     reviews = [lemma.lemmatize(word) for word in tokens if word not in stopwords]
     
 # use function like this in your notebook
-# df['cleaned_text'] = df['text'].apply(lambda x: clean_text(x.lower()))
+# df['cleaned_text'] = df['text'].apply(lambda x: CleanText(x.lower()))
     
     return reviews
