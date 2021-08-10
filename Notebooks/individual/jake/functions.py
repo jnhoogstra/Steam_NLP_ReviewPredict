@@ -2,8 +2,12 @@
 
 import pandas as pd
 import numpy as np
+import time
 
 import re
+import requests
+from bs4 import BeautifulSoup
+
 import string
 import nltk
 nltk.download("stopwords")
@@ -43,3 +47,48 @@ def CleanText(reviews):
 # df['cleaned_text'] = df['text'].apply(lambda x: CleanText(x.lower()))
     
     return reviews
+
+
+
+
+
+###########################################################
+#### webscrape stuff ####
+#### fetching titles and tags from steam using appid ####
+
+## internal functions, not meant to be exported ##
+def get_title(soup):
+    title = soup.find('div', class_="apphub_AppName")
+    return title
+    
+def get_tags(soup):
+    warning = soup.find('div', class_="glance_tags popular_tags")
+    tags = [p.text for p in warning.findAll('a', class_="app_tag")]
+    
+    for index in range(len(tags)):
+        tags[index] = tags[index].replace("\t", "")
+        tags[index] = tags[index].replace("\r\n", "")
+    return tags
+
+
+
+#### MAIN FUNCTION ####
+def FetchTitlesTags(df):
+    game_ids = list(df["appid"].unique())
+    url_list = []
+    
+    for each in game_ids:
+        url = "https://store.steampowered.com/app/{}/".format(each)
+        url_list.append(url)
+        
+    titles = []
+    tags = []
+
+    for url in url_list:
+        html_page = requests.get(url)
+        soup = BeautifulSoup(html_page.content, 'html.parser')
+        titles += get_title(soup)
+        tags.append(get_tags(soup))
+        time.sleep(1.5)
+        
+    return titles, tags
