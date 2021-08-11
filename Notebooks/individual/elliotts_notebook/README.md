@@ -3,16 +3,16 @@
 **Authors:** Elliott Iturbe,  Jacob Hoogstra, Griffin Riner
 
 ## Overview
-The goal of this project is to discover how to make the most profitable movie possible in order to make business recommendations to Microsoft. Descriptive analyses of a variety of data on previously released movies reveal that the most profitable movie Microsoft could make is an adventure movie with an NR rating, directed by Jean Negulsesco at Buena Vistas studios, with a runtime between 100 minutes and 131 minutes.
+The goal of this project is to create an NLP model that can predict if a user would like or not like a game and then combine a recommendation system to the NLP model. In order to give recommendations to the client on games they would like based off the review they created for the previous game.
 
 ## Business Problem
-Microsoft wants to open a movie studio that can compete with other successful movie studios. However, they lack knowledge about filmmaking. To help them in this area, we will find out how a variety of factors affect the popularity of movies and then offer recommendations.
+We set out to make it easier for Users to determing what game to play based off of review they wrote for a previous game that our  NLP model runs and then passes to our recommendation system which recommends games the user would be intrested in.
 
 ## Data
-We examined data on Steam Reviews for video games, data included steamid, appid, app_title, app_tags, review, fps, voted_up, clean_review. Depending on our diffrent phase of the project diffrent features where selected for our recommendation system: add title and app tags were used. But for our NLP models all feature.
+We examined data on Steam Reviews for video games, data included steamid, appid, app_title, app_tags, review, fps, voted_up, clean_review. Depending on our diffrent phase of the project diffrent features where selected for our recommendation system: add title and app tags were used but for our NLP models all feature were used.
 
 ## Methods
-Our process started with organizing our data by combining and minipulating dataframes in order to creating a new one usable one. Data for our Nlp was then vectorized and then traintest split and ranthroughmuliple models until eventually we came to a conclusion for _____ to be used. As for recommendation system sorting by specific values, and merging dataframes. While modeling our data, we used descriptive statistics to create helpful visuals that displayed our findings. Overall, our descriptive analysis is absolutely essential for anyone who wants to succeed in the movie industry.
+Our process started with organizing our data by combining and minipulating dataframes in order to creating a new one usable one. Data for our NLP was then vectorized and then train test split and ran through muliple models until eventually we came to a conclusion for MultinomialNB model to be used. As for recommendation system sorting by specific values, and merging dataframes. While modeling our data, we used descriptive statistics to create helpful visuals that displayed our findings. Overall, our descriptive analysis is absolutely essential for anyone who wants to succeed in the movie industry.
 
 ## Results
 
@@ -44,9 +44,8 @@ This graph shows the average rating of movies according to month of release. Bec
 We recommend that Microsoft uses Buena Vistas studios or models their own studio after BV practices and creates an adventure movie with an NR rating. They should also hire Jean Negulseso. The run time of the movie should be between 100 minutes and 131 minutes. Microsoft should not put time and money into securing any particular release month.
 
 ## Next Steps
-This project did not explore all possible avenues of increasing movie profitability. In the future, analyses could be performed regarding the actors who Microsoft should hire, what kind of storylines are received best by audiences, and what aspects of a movie trailer cause people to develop interest in seeing a movie. Additionally, it could benefit Microsoft to learn about the state of the film industry after COVID-19, which shut down theatres for a long period of time and may have impacted audience interest in ways that are not known yet.
-use data of own creation api/wepscraping no duplicates
-use aws
+This project used a premade data set that was flawed with duplicates and multiple games with not many reviews and one or two games with numerous reviews. So we would want to create our own dataset with the use of an Api call or wepscraping with no duplicates and ability to control to amount of reviews. As well as we would need to use AWS instead of working locally in order to use the large amounts of data we had instead of using samples of the data in order to work on the data locally. 
+
 
 ## For More Information
 Please review our full analysis in [our Jupyter Notebook](./Final/Notebook.ipynb) or our [presentation](./microsoftmovieanalysispowerpoint.pdf).
