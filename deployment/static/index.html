@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+      This is the title that appears in the browser tab.
+      Replace it with the title of your app
+    -->
+    <title>Steam NLP/Recommendation</title>
+    <link rel="stylesheet" media="screen" href="/static/bootstrap.min.css">
+    <!-- If you add custom CSS, put it after the above bootstrap link -->
+  </head>
+  <body>
+    <div class="container">
+      <!-- 
+        This top section has the gray background and large text containing the
+        name of the app
+      -->
+      <div class="jumbotron">
+        <!-- Replace with the name of your app-->
+        <h1 class="display-4">Classifying Reviews and Recommending Games on Steam</h1>
+        <h2>Pointless text</h2>
+      </div>
+      <!-- This section contains a photo + the form for the user to enter data-->
+      <div class="container"> 
+        <div class="row">
+          <div class="col-md-4" style="text-align: center;">
+            <!--
+              Replace with a photo relevant to your project (and caption if
+              applicable). It will automatically fill the same width as the
+              template version due to CSS styling.
+            -->
+            <img src="/static/Logo-Steam.jpg" alt="antelope" style="width: 100%;">
+            <span style="font-size: small;">Photo from
+              <a href="https://store.steampowered.com/">
+                Steam
+              </a>
+            </span>
+          </div>
+          <div class="col-md-8">
+            <!--
+              Replace all labels and inputs with the relevant features for your
+              model
+              Attributes to note:
+              id: this is used on the front end to link the label to the input
+              name: this is used on the back end when you submit the form; it
+                becomes the key in the params dictionary
+              value: this is the default value of the input. not necessary but
+                helpful for speeding up demos
+
+              The <br>s between each label/input combo are a quick and easy way
+              to put each one on its own line. They aren't necessary for the
+              form to function but they help the flow without needing a lot of
+              nested <div>s to achieve the desired layout
+            -->
+            <label>Select a game to review: </label>
+            <select action="/make_prediction" method="post" name="game_title" id="input1">
+                <option value="Counter-Strike: Global Offensive">Counter-Strike: Global Offensive</option>
+                <option value="">Game</option>
+                <option value="">Game</option>
+                <option value="">Game</option>
+                <option value="">Game</option>
+              </select>
+              <input type="text" id="input-1" name="adult_antelope_population" value="7.2">
+              <br>
+              <label for="input-2">Write your review</label>
+              <input type="text" id="input2" name="review" value="This game was really fun!  I enjoyed it a lot.">
+              <br>
+              <br>
+              <!-- You shouldn't need to change the submit button -->
+              <input type="submit" class="btn btn-primary btn-lg" value="Predict!">
+          </div>
+        </div>  
+      </div>
+      <!-- hr is "horizontal rule". it makes a nice classy line -->
+      <hr>
+      <!-- This section contains paragraphs of text at the bottom -->
+      <div class="container">
+        <!--
+          Replace with your content. The <p> tags are how you create new
+          paragraphs. If you just hit enter, the text will "float" up to the
+          previous line
+        -->
+        <p>
+          Some cool content will go here
+        </p>
+        <p>
+          This app predicts blah blah blah
+        </p>
+        <p>
+          Lorem Ipsum
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
