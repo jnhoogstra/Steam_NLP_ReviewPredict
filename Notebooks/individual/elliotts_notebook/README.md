@@ -1,4 +1,5 @@
-# Steam_NLP_ReviewPredict
+# Classifying Reviews and Recommending Games on Steam 
+
 **Authors:** Elliott Iturbe,  Jacob Hoogstra, Griffin Riner
 
 ## Overview
@@ -44,11 +45,13 @@ We recommend that Microsoft uses Buena Vistas studios or models their own studio
 
 ## Next Steps
 This project did not explore all possible avenues of increasing movie profitability. In the future, analyses could be performed regarding the actors who Microsoft should hire, what kind of storylines are received best by audiences, and what aspects of a movie trailer cause people to develop interest in seeing a movie. Additionally, it could benefit Microsoft to learn about the state of the film industry after COVID-19, which shut down theatres for a long period of time and may have impacted audience interest in ways that are not known yet.
+use data of own creation api/wepscraping no duplicates
+use aws
 
 ## For More Information
 Please review our full analysis in [our Jupyter Notebook](./Final/Notebook.ipynb) or our [presentation](./microsoftmovieanalysispowerpoint.pdf).
 
-For any additional questions, please contact **Elliott Iturbe at eaiturbe@bsc.edu, Will Toranto at williamtoranto@gmail.com, or Colette Crowder at crcrowde@bsc.edu**
+For any additional questions, please contact **Elliott Iturbe at eaiturbe@bsc.edu, Jacon Hoogstra at jnhoogstra@crimson.ua.edu, or Griffin Riner at gnriner@bsc.edu**
 
 ## Repository Structure
 
