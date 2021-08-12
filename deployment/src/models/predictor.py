@@ -55,23 +55,23 @@ def get_recommendations(title, score, df):
     idx = indices[title].values
 
     # Get the pairwsie similarity scores of all games with that game
-    sim_scores = list(enumerate(cosine_sim[idx]))
+    sim_scores = cosine_sim[idx]
 
     # Sort the movies based on the similarity scores
-    #sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+    sim_scores.sort()
 
     # Get the scores of the 10 most similar games
     if score == 0:
-        sim_scores = sim_scores[156:167]
+        sim_scores = sim_scores[0][0:10]
     elif score == 1:
-        sim_scores = sim_scores[1:11]
+        sim_scores = sim_scores[0][-11:-1]
 
     # Get the movie indices
     game_indices = [i[0] for i in sim_scores]
 
     # Return the top 10 most similar movies
     #return recommend['app_title'].iloc[game_indices].values
-    return sim_scores
+    return game_indices
 
 
 def get_prediction(feature_values):
@@ -81,24 +81,25 @@ def get_prediction(feature_values):
     
     # Model is expecting vectorized text, so we first need to transform the review
     df = pd.read_csv("src/models/thanos.csv")
-    vector = TfidfVectorizer(analyzer=CleanText, ngram_range=(2, 2))
-    vector.fit(df["review"])
+    #vector = TfidfVectorizer(analyzer=CleanText, ngram_range=(2, 2))
+    #vector.fit(df["review"])
     
-    data = vector.transform(feature_values["review"])
+    #data = vector.transform(feature_values["review"])
     
-    data = pd.DataFrame(data.toarray())
-    data.columns = vector.get_feature_names()
+    #data = pd.DataFrame(data.toarray())
+    #data.columns = vector.get_feature_names()
     
     # Now the model can make a prediction from this vectorized text
-    predictions = loaded_model.predict(data)
+    #predictions = loaded_model.predict(data)
     
     
     # here we get what we need from the recommendation system
     # converting predictions to integers
-    if predictions == True:
-        score = 1
-    else:
-        score = 0
+    #if predictions == True:
+    #    score = 1
+    #else:
+    #    score = 0
+    score = 0
     title = feature_values["game_title"]
         
     recommendations = get_recommendations(title, score, df)
