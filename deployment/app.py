@@ -5,6 +5,10 @@ from src.models.predictor import get_prediction
 
 app = Flask(__name__, static_url_path="/static")
 
+@app.context_processor
+def inject_enumerate():
+    return dict(enumerate=enumerate)
+
 @app.route("/")
 def index():
     """Return the main page."""

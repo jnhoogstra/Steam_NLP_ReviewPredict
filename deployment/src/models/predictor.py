@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import pickle
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -13,7 +12,6 @@ nltk.download("wordnet")
 from ast import literal_eval
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
 
 def CleanText(reviews):
     stopwords = nltk.corpus.stopwords.words('english')
@@ -33,11 +31,19 @@ def clean_data(x):
 def create_usable(x):
     return ' '.join(x["app_tags"]) + ' ' + ' '
 
+def my_enumerate(sequence, start=0):
+    n = start
+    for elem in range(166):
+        yield n, sequence[0][elem]
+        n += 1
+
 def get_recommendations(title, score, df):
     thanos = df
-    features = ["app_tags"]
+    features = ['app_tags']
     for feature in features:
         thanos[feature] = thanos[feature].apply(literal_eval)
+        
+    for feature in features:
         thanos[feature] = thanos[feature].apply(clean_data)
     
     thanos["usable"] = thanos.apply(create_usable, axis=1)
@@ -51,27 +57,26 @@ def get_recommendations(title, score, df):
     recommend = title_and_tags.reset_index(drop=True)
     indices = pd.Series(recommend.index, index=recommend['app_title'])
     
-    # Get the index of the movie that matches the title
+    # Get the index of the game that matches the title
     idx = indices[title].values
 
     # Get the pairwsie similarity scores of all games with that game
-    sim_scores = cosine_sim[idx]
+    sim_scores = list(my_enumerate(cosine_sim[idx].tolist()))
 
-    # Sort the movies based on the similarity scores
-    sim_scores.sort()
+    # Sort the games based on the similarity scores
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
 
     # Get the scores of the 10 most similar games
     if score == 0:
-        sim_scores = sim_scores[0][0:10]
+        sim_scores = sim_scores[156:167]
     elif score == 1:
-        sim_scores = sim_scores[0][-11:-1]
+        sim_scores = sim_scores[1:11]
 
-    # Get the movie indices
+    # Get the game indices
     game_indices = [i[0] for i in sim_scores]
 
     # Return the top 10 most similar movies
-    #return recommend['app_title'].iloc[game_indices].values
-    return game_indices
+    return recommend['app_title'].iloc[game_indices]
 
 
 def get_prediction(feature_values):
@@ -81,25 +86,25 @@ def get_prediction(feature_values):
     
     # Model is expecting vectorized text, so we first need to transform the review
     df = pd.read_csv("src/models/thanos.csv")
-    #vector = TfidfVectorizer(analyzer=CleanText, ngram_range=(2, 2))
-    #vector.fit(df["review"])
+    vector = TfidfVectorizer(analyzer=CleanText, ngram_range=(2, 2))
+    vector.fit(df["review"])
     
-    #data = vector.transform(feature_values["review"])
+    data = vector.transform(feature_values["review"])
     
-    #data = pd.DataFrame(data.toarray())
-    #data.columns = vector.get_feature_names()
+    data = pd.DataFrame(data.toarray())
+    data.columns = vector.get_feature_names()
     
     # Now the model can make a prediction from this vectorized text
-    #predictions = loaded_model.predict(data)
+    predictions = loaded_model.predict(data)
     
     
     # here we get what we need from the recommendation system
     # converting predictions to integers
-    #if predictions == True:
-    #    score = 1
-    #else:
-    #    score = 0
-    score = 0
+    if predictions == True:
+        score = 1
+    else:
+        score = 0
+    
     title = feature_values["game_title"]
         
     recommendations = get_recommendations(title, score, df)
