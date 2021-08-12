@@ -18,11 +18,11 @@ Our process started with organizing our data by combining and minipulating dataf
 
 This visualization shows The Parts of Speech(POS) Tagging in Python’s NLTK library for the positive votes.
 
-![graph1](./images/df_up_textblod.png)
+![graph1](./images/df_up_textblob_corr.png)
 
 This is a visual of The Parts of Speech(POS) Tagging in Python’s NLTK library for the negative votes.
 
-![graph2](./images/df_down_textblob.png)
+![graph2](./images/df_down_textblob_corr.png)
 
 This graph shows the most profitable directors for adventure movies. We conclude that Jean Negulesco is by far the best choice.
 
@@ -34,7 +34,7 @@ Buena Vistas Studios ("BV") is responsible 65% of the top 20 grossing movies. If
 
 
 ## Conclusions
-We have a final Nlp model that
+Using our models, Steam would be able to create recommendations based on their user’s reviews. This would help them tailor their recommendations to their user’s based on games they like and dislike.
 
 ## Next Steps
 This project used a premade data set that was flawed with duplicates and multiple games with not many reviews and one or two games with numerous reviews. So we would want to create our own dataset with the use of an Api call or wepscraping with no duplicates and ability to control to amount of reviews. As well as we would need to use AWS instead of working locally in order to use the large amounts of data we had instead of using samples of the data in order to work on the data locally. 
