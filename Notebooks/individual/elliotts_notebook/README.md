@@ -24,11 +24,10 @@ This is a visual of The Parts of Speech(POS) Tagging in Python’s NLTK library 
 
 ![graph2](./images/df_down_textblob_corr.png)
 
-This graph shows the most profitable directors for adventure movies. We conclude that Jean Negulesco is by far the best choice.
-
+This WordCloud shows the most frequent words in the sample taken for positive reviews.
 ![graph3](./images/dfup_wordcloud.png)
 
-Buena Vistas Studios ("BV") is responsible 65% of the top 20 grossing movies. If Microsoft is interested in using another studio to make their film, they should contact Buena Vistas.
+This WordCloud shows the most frequent words in the sample taken for negative reviews.
 
 ![graph4](./images/df_down_wordcloud.png)
 
