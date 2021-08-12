@@ -23,10 +23,10 @@ def make_prediction():
     print(feature_values) # Remove this when you're done debugging
 
     # Send the values to the model to get a prediction
-    prediction = get_prediction(feature_values)
+    prediction, recommendations = get_prediction(feature_values)
 
     # Tell the browser to fetch the results page, passing along the prediction
-    return redirect(url_for("show_results", prediction=prediction))
+    return redirect(url_for("show_results", prediction=prediction, recommendations=recommendations))
 
 @app.route("/show_results")
 def show_results():
@@ -34,12 +34,13 @@ def show_results():
     
     # Extract the prediction from the URL params
     prediction = request.args.get("prediction")
+    recommendations = request.args.get("recommendations")
 
     # Round it for display purposes
     #prediction = round(float(prediction), 3)
 
     # Return the results pge
-    return render_template("results.html", prediction=prediction)
+    return render_template("results.html", prediction=prediction, recommendations=recommendations)
 
 
 if __name__ == "__main__":

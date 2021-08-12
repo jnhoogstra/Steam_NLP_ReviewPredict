@@ -5,7 +5,7 @@
       This is the title that appears in the browser tab.
       Replace it with the title of your app
     -->
-    <title>Spring Fawn Predictor</title>
+    <title>Steam NLP/Recommendation</title>
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='bootstrap.min.css') }}">
   </head>
   <body>
@@ -27,10 +27,11 @@
               </td>
               <td class="align-middle" style="width: 33%; text-align: center; font-size: 3em;">
                 {{ prediction }}
+                {{recommendations}}
               </td>
               <!-- Customize this text to describe the result -->
               <td class="align-middle" style="width: 33%">
-                hundreds of spring antelope fawns
+                Recommendations
               </td>
             </tr>
           </tbody>
@@ -49,7 +50,7 @@
         <hr>
         <div class="row">
           <div class="col" style="text-align: center;">
-            <a href="/">Go back home</a>
+            <a href="/">Return Home</a>
           </div>
         </div>
         <hr>
