@@ -16,32 +16,25 @@ Our process started with organizing our data by combining and minipulating dataf
 
 ## Results
 
-This visualization shows which genre of movie Microsoft should make based on which genre has the highest worldwide gross.
+This visualization shows The Parts of Speech(POS) Tagging in Python’s NLTK library for the positive votes.
 
-![graph1](./images/grouped_barplot_Seaborn_barplot_Python_corrected.png)
+![graph1](./images/df_up_textblod.png)
 
-This is a visual of how Rotten Tomatoes user-generated ratings vary according to different MPAA ratings of adventure movies.
+This is a visual of The Parts of Speech(POS) Tagging in Python’s NLTK library for the negative votes.
 
-![graph2](./images/Rotten_tomatose_Ratings.png)
+![graph2](./images/df_down_textblob.png)
 
 This graph shows the most profitable directors for adventure movies. We conclude that Jean Negulesco is by far the best choice.
 
-![graph3](./images/Directors_and_Profit_for_Adventure_Movies.png)
+![graph3](./images/dfup_wordcloud.png)
 
 Buena Vistas Studios ("BV") is responsible 65% of the top 20 grossing movies. If Microsoft is interested in using another studio to make their film, they should contact Buena Vistas.
 
-![graph4](./images/top20_barplot_Seaborn_barplot_Python.png)
+![graph4](./images/df_down_wordcloud.png)
 
-This is a comparison of runtime to revenue that reveals there is no true monetary value for creating a movie with a runtime outside of the shaded area.
-
-![graph5](./images/Runtime_Comparison_line_added.png)
-
-This graph shows the average rating of movies according to month of release. Because there is no significant difference between each month, we conclude release month doesn't really matter.
-
-![graph6](./images/Month_and_Rating.png)
 
 ## Conclusions
-We recommend that Microsoft uses Buena Vistas studios or models their own studio after BV practices and creates an adventure movie with an NR rating. They should also hire Jean Negulseso. The run time of the movie should be between 100 minutes and 131 minutes. Microsoft should not put time and money into securing any particular release month.
+We have a final Nlp model that
 
 ## Next Steps
 This project used a premade data set that was flawed with duplicates and multiple games with not many reviews and one or two games with numerous reviews. So we would want to create our own dataset with the use of an Api call or wepscraping with no duplicates and ability to control to amount of reviews. As well as we would need to use AWS instead of working locally in order to use the large amounts of data we had instead of using samples of the data in order to work on the data locally. 
