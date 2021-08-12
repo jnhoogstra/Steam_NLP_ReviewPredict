@@ -43,25 +43,24 @@ def get_recommendations(title, score, df):
     thanos["usable"] = thanos.apply(create_usable, axis=1)
     title_and_tags = thanos.drop(['steamid', 'appid', 'app_tags', 'review', 'fps', 'voted_up'], axis=1)
     title_and_tags = title_and_tags.drop_duplicates()
-    title_and_tags["app_title"].unique()
     
     count = CountVectorizer(stop_words='english')
     count_matrix = count.fit_transform(title_and_tags['usable'])
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     
-    recommend = title_and_tags.reset_index()
+    recommend = title_and_tags.reset_index(drop=True)
     indices = pd.Series(recommend.index, index=recommend['app_title'])
     
     # Get the index of the movie that matches the title
-    idx = indices[title]
+    idx = indices[title].values
 
-    # Get the pairwsie similarity scores of all movies with that movie
+    # Get the pairwsie similarity scores of all games with that game
     sim_scores = list(enumerate(cosine_sim[idx]))
 
     # Sort the movies based on the similarity scores
-    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+    #sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
 
-    # Get the scores of the 10 most similar movies
+    # Get the scores of the 10 most similar games
     if score == 0:
         sim_scores = sim_scores[156:167]
     elif score == 1:
@@ -71,7 +70,8 @@ def get_recommendations(title, score, df):
     game_indices = [i[0] for i in sim_scores]
 
     # Return the top 10 most similar movies
-    return recommend['app_title'].iloc[game_indices]
+    #return recommend['app_title'].iloc[game_indices].values
+    return sim_scores
 
 
 def get_prediction(feature_values):
@@ -101,7 +101,7 @@ def get_prediction(feature_values):
         score = 0
     title = feature_values["game_title"]
         
-    recommendations = get_recommendations(title, score, df).to_list()
+    recommendations = get_recommendations(title, score, df)
     
     # We are only making a single prediction, so return the 0-th value
     #predictions[0], 
