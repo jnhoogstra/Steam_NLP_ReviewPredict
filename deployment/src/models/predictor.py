@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import pickle
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -103,7 +104,8 @@ def get_prediction(feature_values):
     recommendations = get_recommendations(title, score, df).to_list()
     
     # We are only making a single prediction, so return the 0-th value
-    return predictions[0], recommendations
+    #predictions[0], 
+    return recommendations
 
 
 def un_pickle_model():
