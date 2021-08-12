@@ -36,7 +36,7 @@ def show_results():
     prediction = request.args.get("prediction")
 
     # Round it for display purposes
-    prediction = round(float(prediction), 3)
+    #prediction = round(float(prediction), 3)
 
     # Return the results pge
     return render_template("results.html", prediction=prediction)
