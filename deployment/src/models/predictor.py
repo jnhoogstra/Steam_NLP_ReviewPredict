@@ -76,7 +76,7 @@ def get_recommendations(title, score, df):
     game_indices = [i[0] for i in sim_scores]
 
     # Return the top 10 most similar movies
-    return recommend['app_title'].iloc[game_indices]
+    return recommend['app_title'].iloc[game_indices].values
 
 
 def get_prediction(feature_values):
@@ -102,8 +102,10 @@ def get_prediction(feature_values):
     # converting predictions to integers
     if predictions == True:
         score = 1
+        predictions = "NLP Prediction: Positive Review"
     else:
         score = 0
+        predictions = "NLP Prediction: Negative Review"
     
     title = feature_values["game_title"]
         
@@ -111,7 +113,7 @@ def get_prediction(feature_values):
     
     # We are only making a single prediction, so return the 0-th value
     #predictions[0], 
-    return recommendations
+    return predictions, recommendations
 
 
 def un_pickle_model():

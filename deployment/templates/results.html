@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!--
       This is the title that appears in the browser tab.
       Replace it with the title of your app
     -->
     <title>Steam NLP/Recommendation</title>
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
-      <div class="jumbotron">
-        <h1 class="display-4">Results</h1>
-      </div>
-      <div class="container">
-        <!-- 
+        <div class="jumbotron">
+            <h1 class="display-4">Results</h1>
+        </div>
+        <div class="container">
+            <!-- 
           This table contains the result as a large number surrounded by smaller
           text. It uses a table rather than bootstrap rows/cols in order to use
           the align-middle CSS class
         -->
-        <table style="width: 100%;">
-          <tbody>
-            <tr>
-              <td class="align-middle" style="width: 33%; text-align: right;">
-                The model's prediction is
-              </td>
-              <td class="align-middle" style="width: 33%; text-align: center; font-size: 3em;">
-                {{ prediction }}
-                {{ recommendations }}
-              </td>
-              <!-- Customize this text to describe the result -->
-              <td class="align-middle" style="width: 33%">
-                Recommendations
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <hr>
-        <div class="row">
-          <div class="col" style="text-align: center;">
-            <!-- 
+            <div class="row">
+                <div class="col-md-4">
+                    <!--
+              Replace with a photo relevant to your project (and caption if
+              applicable). It will automatically fill the same width as the
+              template version due to CSS styling.
+            -->
+                    <img src="/static/Logo-Steam.jpg" alt="antelope" style="width: 30%;">
+                    <span style="font-size: small;">Photo from
+                        <a href="https://store.steampowered.com/">
+                            Steam
+                        </a>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p id="nlp">
+                        {{ prediction }}
+                    </p>
+
+                    <script>
+                        if ({{ prediction }} === True) {
+                            document.getElementById("nlp").innerHTML = "NLP Prediction: Positive Review!";
+                        }
+                    </script>
+                    <p>
+                        Recommendations: {{ recommendations }}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col" style="text-align: center;">
+                    <!-- 
               Replace this with something relevant, maybe a freshly-generated
               matplotlib graph?
             -->
-            <img src="{{ url_for('static', filename='upward_sloping_chart.png') }}" 
-              alt="upward sloping chart" width="50%">
-          </div>
+                    <!--<img src="{{ url_for('static', filename='upward_sloping_chart.png') }}" 
+              alt="upward sloping chart" width="50%"> -->
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col" style="text-align: center;">
+                    <a href="/">Return Home</a>
+                </div>
+            </div>
+            <hr>
         </div>
-        <hr>
-        <div class="row">
-          <div class="col" style="text-align: center;">
-            <a href="/">Return Home</a>
-          </div>
-        </div>
-        <hr>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>
