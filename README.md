@@ -40,7 +40,7 @@ This project used a premade data set that was flawed with duplicates and multipl
 
 
 ## For More Information
-Please review our full analysis in [our EDA Jupyter Notebook](./Chapter1_EDA_prep.ipynb), [our NLP Jupyter Notebook](./Chapter2_NLP.ipynb), [our Recommendation Jupyter Notebook](./Chapter3_Recommend.ipynb) or our [presentation](./Steam Reviews Sentiment and Recommendations.pdf).
+Please review our full analysis in [our EDA Jupyter Notebook](./Chapter1_EDA_prep.ipynb), [our NLP Jupyter Notebook](./Chapter2_NLP.ipynb), [our Recommendation Jupyter Notebook](./Chapter3_Recommend.ipynb) or our [presentation](./Steam\ Reviews\ Sentiment\ and\ Recommendations.pdf).
 
 For any additional questions, please contact **Elliott Iturbe at eaiturbe@bsc.edu, Jacon Hoogstra at jnhoogstra@crimson.ua.edu, or Griffin Riner at gnriner@bsc.edu**
 
